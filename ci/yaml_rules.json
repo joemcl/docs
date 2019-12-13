@@ -1,0 +1,261 @@
+{
+  "aliases": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "Other locations where this guide can be found. Should be an array of entries in the form /applications/big-data/using-big-data/"
+  },
+  "audiences": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of audiences. Could be Foundational, Beginner, Intermediate, or Expert"
+  },
+  "author": {
+    "elements": [
+      "name",
+      "email"
+    ],
+    "required": true,
+    "type": "dict",
+    "description": "First and last names of the original guide author."
+  },
+  "classic_manager_link": {
+	  "elements": false,
+	  "required": false,
+	  "type": "text",
+	  "description": "In a guide which features copy or screenshots of the new Cloud Manager, this provides a link to the older guide written for the Linode Classic Manager, if an older/classic version of the guide was previously written. The link will be included within the Linode Classic Manager banner message at the bottom of the guide. The link must be a string using the alias format (platform/example-guide-classic-manager). Both the classic_manager_link and cloud_manager_link should be used between corresponding guides to create a bi-directional link. Must use alias-style relative links (e.g. platform/manager/dns-manager-classic-manager/)."
+  },
+  "cloud_manager_link": {
+	  "elements": false,
+	  "required": false,
+	  "type": "text",
+	  "description": "In a guide which features copy or screenshots of the Linode Classic Manager, this provides a link to a guide written for the new Cloud Manager, if a new version of the guide has been written. The link will be included within the Cloud Manager banner message at the top of the guide. The link must be a string using the alias format (platform/example-guide). Both the classic_manager_link and cloud_manager_link should be used between corresponding guides to create a bi-directional link. Must use alias-style relative links (e.g. platform/manager/dns-manager/)."
+  },
+  "concentrations": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "A list of development section concentrations. Case sensitive, capitalize words where appropriate. Could be one of: 'Scripting, Automation, and Build Tools', 'Web Applications', 'Unit Testing', or 'Scientific Computing and Big Data'"
+  },
+  "h1_title": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "This sets the H1, but leaves the title in the metadata"
+    },
+  "comments": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If false, Disqus comments will be disabled for this guide."
+  },
+  "contributor": {
+    "elements": [
+      "name",
+      "link"
+    ],
+    "required": false,
+    "type": "text",
+    "description": "For freelancer guides only. First and last name of the freelancer who wrote the guide."
+  },
+  "dedicated_cpu_link": {
+        "elements": false,
+        "required": false,
+        "type": "text",
+        "description": "Adds a banner to guide announcing Linode Dedicated CPU instances."
+  },
+  "deprecated": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, guide will be displayed with a deprecated tag on view and in search results. Will not be visible on main section pages but still appears on subsections."
+  },
+  "deprecated_link": {
+	"elements": false,
+	"required": false,
+	"type": "text",
+	"description": "In a deprecated guide, use this tag to include a link to the most up to date version of the guide. Must use alias-style relative links (e.g. applications/containers/using-docker). If this tag is absent in a deprecated guide, no link will be displayed"
+  },
+  "description": {
+    "elements": false,
+    "required": true,
+    "type": "text",
+    "description": "Two to three sentences describing the guide."
+  },
+  "expiryDate": {
+    "elements": false,
+    "required": false,
+    "type": "date",
+    "description": "If the date is before the current date, Hugo will not build this guide."
+  },
+  "external_resources": {
+    "elements": true,
+    "required": false,
+    "type": "list",
+    "description": "List of external links that will appear at the bottom of the guide."
+  },
+  "headless": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index and will not be rendered unless embedded in another guide."
+  },
+  "icon": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "For items displayed on frontpage, this specifies the icon that will identify this guide."
+  },
+  "image": {
+    "elements": false,
+    "required": false,
+    "type": "text"
+  },
+  "keywords": {
+    "elements": "list",
+    "required": true,
+    "type": "list",
+    "description": "Comma-separated array of search keywords relevant to this guide."
+  },
+  "layout": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "If a layout other than the default is needed (i.e. for the Contribute page), specify the name of the layout here."
+  },
+  "languages": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of programming languages that apply to the guide. Could be JavaScript, Go, Python, etc."
+  },
+  "license": {
+    "elements": false,
+    "required": true,
+    "type": "link",
+    "description": "The license under which this guide is published. Should be a Markdown link to the relevant license documentation."
+  },
+  "modified": {
+    "elements": false,
+    "required": false,
+    "type": "date",
+    "description": "(DEPRECATED: Hugo now uses the date of the last Git commit) The date this guide was last modified. Should use the form YYYY-MM-DD."
+  },
+  "modified_by": {
+    "elements": false,
+    "required": true,
+    "type": "text",
+    "description": "Name of the writer who last modified this guide."
+  },
+  "og_description": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Description to be displayed on Facebook links."
+  },
+  "og_title": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Title to be displayed on Facebook links."
+  },
+  "os": {
+    "elements": "list",
+    "required": false,
+    "type": "list",
+    "description": "List of operating systems to generate buttons"
+  },
+  "promo_code_amount": {
+      "elements": false,
+	  "required": false,
+	  "type": "text",
+	  "description": "Amount to be displayed for custom promotion code message"
+    },
+  "promo_code": {
+    "elements": false,
+	"required": false,
+	"type": "text",
+	"description": "Name to be displayed for custom promotion code message"
+  },
+  "promo_default": {
+      "elements": false,
+	  "required": false,
+	  "type": "bool",
+	  "description": "Set to false to disable DOCS10 promo code message"
+    },
+  "published": {
+    "elements": false,
+    "required": true,
+    "type": "date",
+    "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
+  },
+  "shortguide": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index."
+  },
+  "hiddenguide": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index."
+  },
+  "show_on_frontpage": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be displayed on the landing page at linode.com/docs/."
+  },
+  "show_on_rss_feed": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If false, publishing or updates to this guide will not be shown in the RSS feed."
+  },
+  "show_social_image_in_article": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If false, any social media image set with the image frontmatter field will not be displayed in the guide."
+  },
+  "slug": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
+  },
+  "title": {
+    "elements": false,
+    "required": true,
+    "type": "text",
+    "description": "Guide title."
+  },
+  "title_short": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Short version of title to be displayed in a front page icon."
+  },
+  "twitter": {
+    "elements": [
+      "card"
+    ],
+    "required": false,
+    "type": "dict",
+    "description": "Determines which type of Twitter card summary to display when sharing a guide."
+  },
+  "type": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Hugo front matter variable. Override .Page.Type variable for this guide."
+  },
+  "weight": {
+    "elements": false,
+    "required": false,
+    "type": "number",
+    "description": "For guides displayed on the front (landing) page. Setting a higher weight will move the guide to the top of the list of icons."
+  }
+}

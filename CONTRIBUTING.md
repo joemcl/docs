@@ -1,43 +1,126 @@
-Write Your Article
-------------------
+# Contribute to Linode
 
-Use the [style guide](docs/style-guide.md). While you're writing, make sure your content is:
+This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
 
--   Accurate. Your instructions should be straightforward and technically accurate.
--   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Library [style guide](docs/style-guide.md).
--   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
+## Fixing an issue
 
-Want to make sure you don't waste time writing a long article we can't use? Submit a writing sample first, to <contribute@linode.com>.
+If you want to start contributing by helping us correct existing issues, go to our [GitHub issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
 
-Submit Your Article
--------------------
+## Fork the Linode Library
 
-Submit your article as a pull request, or by emailing <contribute@linode.com>. Articles should be sent as a plain text or PHP Markdown Extra file attachment. When submitting through GitHub, please create a new branch for your changes. Writing samples are welcome as well.
+All of our guides are stored in the [github.com/linode/docs](https://github.com/linode/docs) repository. You will need to clone this repository to your local computer.
 
-Got images? Attach them as **.png** or **.jpg** files. If an image is over 650 pixels wide, please send both the original and a 650-pixel-wide version.
+For more information about using Git, refer to the [official Git documentation](https://git-scm.com/documentation). If you're a Git beginner, both [GitHub](https://guides.github.com/) and [GitLab](https://docs.gitlab.com/ee/gitlab-basics/README.html) offer excellent primers to get you started.
 
-Submission checklist:
+1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner.
 
--   Article in **.txt** or **.md** format
--   Images
--   Your name, as you want it to appear on the site
+2.  Clone your fork of the repository. Replace `YOUR-USERNAME` with your Github username. This example creates a `linode-docs` directory:
 
-Once you've submitted your article, here's what you can expect:
+        git clone https://github.com/YOUR-USERNAME/docs linode-docs
 
-1.  You'll receive a brief response acknowledging your submission.
-2.  We will do a technical review of your material. This will take a few days.
-3.  We will do a copy review of the article. This will take a few days.
-4.  You may receive questions or comments from us, or a request for a resubmission with a few changes.
-5.  We will let you know that your article has been chosen for publication and send you the final version we are planning to publish. You will have 36 hours to respond and approve our publication of the final version.
-6.  If you respond positively (non-response will be taken as a go-ahead to publish), we will publish the article.
+    This may take a few minutes to copy all of the files and images to your machine.
 
-Legal Information
------------------
+3.  Navigate to the project directory:
 
-COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode’s sole, absolute and unfettered discretion, Linode may make any changes in, deletions from, or additions to the Work.
+        cd linode-docs
 
-CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with the Digital Library or otherwise. Credit for the Work shall read “This is a Linode Community guide by author “writer’s name”.”
+## Install Hugo
 
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you will need to install Hugo on your local computer.
 
+Install a version of Hugo newer than 0.30. Earlier versions of Hugo will not render the site correctly.
 
+### OSX
 
+On OSX, the easiest way to install Hugo is with [Homebrew](https://brew.sh/):
+
+    brew install hugo
+
+### Linux
+
+Go to the [Hugo releases](https://github.com/gohugoio/hugo/releases) page and download the most up to date binary for your platform. Replace each instance of `v0.31.1` in this example with the newest version:
+
+    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.31.1/hugo_0.31.1_Linux-64bit.tar.gz
+    tar -xvzf hugo_0.31.1_Linux-64bit.tar.gz
+    sudo mv hugo /usr/local/bin
+
+### Windows
+
+Use [Chocolatey](https://chocolatey.org/) to install Hugo on Windows:
+
+    choco install hugo -confirm
+
+## Create a New Guide
+
+This section takes you through the process of creating a new guide using the topic of installing nginx on Debian as an example. You can use a [Hugo archetype](https://gohugo.io/content-management/archetypes/) to simplify the process.
+
+1.  Checkout the develop branch:
+
+        git checkout develop
+
+2.  Update the develop branch with the latest changes. If this is the first time creating a new guide, you will have to first add the docs repository as a remote:
+
+        git remote add upstream https://github.com/linode/docs.git
+
+    Update the develop branch:
+
+        git pull upstream develop
+
+3.  Create a new branch for your guide:
+
+        git checkout -b nginx-on-debian
+
+4.  From the root of the Docs repository, run the following command. Specify the location and title of your guide; the example nginx guide should be located in `web-servers/nginx`. This will create a markdown file populated with YAML front matter:
+
+        hugo new web-servers/nginx/how-to-install-nginx-on-debian/index.md --kind content
+
+    This will create a subdirectory with the guide's intended url, with an `index.md` file inside that will hold the guide's contents:
+
+        /Users/your-macbook-user/linode-docs/docs/web-servers/nginx/how-to-install-nginx-on-debian/index.md created
+
+    Any images should be added inside this directory as well. Note that the guide is created under a `docs/` subdirectory that's within the Docs repository; all guides will be under this subdirectory. The root of the Docs repository itself contains related information: Hugo's configuration file, theme information, unit testing information, etc.
+
+5.  Start the Hugo server:
+
+        hugo server
+
+    This starts a local server you can use to view the Linode library in your browser on `http://localhost:1313/docs/`.
+
+6.  In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/web-servers/nginx/how-to-install-nginx-on-debian`.
+
+## Run Tests
+
+The `ci/` directory contains tests written in Python to ensure a given guide meets some of Linode's basic guidelines. Python 3.4 or newer is required to run these tests.
+
+1.  Using a virtual environment to download dependencies is highly recommended. Install a virtual environment using [Anaconda/Miniconda](https://www.anaconda.com/download/#macos) or [Virtualenv](https://virtualenv.pypa.io/en/stable/).
+
+2.  Use pip to install all the requirements:
+
+        pip install -r ci/requirements.txt
+
+3.  Run all of the tests in `ci/`:
+
+        python -m pytest ci/
+
+4.  Use the `-rs` flag to display the reasons for any skipped tests:
+
+        python -m pytest -rs ci/
+
+## Write and Submit
+
+Your local Hugo development server has hot-reloading enabled, so you will be able to view changes to your guide as you save them. Please see our [Linode Writer's Formatting guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for more information.
+
+Images should be placed in the guide's subdirectory and linked using their filename as the relative URL: `![Image Title](image.png)`.
+
+1.  Commit your changes to your local branch:
+
+        git add docs/web-servers/nginx/how-to-install-nginx-on-debian/
+        git commit -m "Initial draft of guide"
+
+2.  Push the local branch to your fork:
+
+        git push --set-upstream origin nginx-on-debian
+
+3.  Go to `https://github.com/linode/docs` and open a pull request.
+
+Your guide is now submitted. Thank you for contributing to Linode! A member of the content team will review your guide and contact you if any changes are required.
